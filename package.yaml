@@ -1,0 +1,29 @@
+descriptor-schema-version: "2.0"
+info:
+  author-link: "http://www.cisco.com/"
+  author-name: "Mike Maas"
+  description: "Serial-MQTT Proxy"
+  name: "Serial-MQTT Proxy"
+  version: "0.9"
+
+app:
+  type: paas
+  resources:
+    profile: c1.small
+    devices:
+      -
+        device-id: serial
+        label: HOST_DEV1
+        type: serial
+        usage: "Serial Adapter"
+
+    network:
+     -
+       interface-name: eth0
+       ports:
+         tcp: [9000]
+
+  startup:
+    runtime: python
+    runtime-version: 2.7.3
+    target: main.py
